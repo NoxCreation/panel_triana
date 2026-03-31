@@ -1,0 +1,173 @@
+openapi: 3.0.0
+info:
+  title: sw
+  version: 1.0.0
+paths:
+  /api/v1/auth:
+    post:
+      summary: /auth
+      operationId: /auth
+      description: ''
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: ''
+      requestBody:
+        $ref: '#/components/requestBodies//auth'
+  /api/v1/articles:
+    get:
+      summary: ListArticles
+      operationId: ListArticles
+      description: ''
+      tags:
+        - Artículos
+      responses:
+        '200':
+          description: ''
+      parameters:
+        - name: type
+          in: query
+          description: ''
+          required: true
+          example: fundamentals
+        - name: page
+          in: query
+          description: ''
+          required: true
+          example: '0'
+        - name: pageSize
+          in: query
+          description: ''
+          required: true
+          example: '10'
+  /api/v1/workout/part_of_body:
+    get:
+      summary: PartOfBodyList
+      operationId: PartOfBodyList
+      description: ''
+      tags:
+        - Workout
+      responses:
+        '200':
+          description: ''
+      parameters:
+        - name: size
+          in: query
+          description: ''
+          required: true
+          example: '10'
+  /api/v1/workout/part_of_body/lower_body:
+    get:
+      summary: PartOfBodyDetail
+      operationId: PartOfBodyDetail
+      description: ''
+      tags:
+        - Workout
+      responses:
+        '200':
+          description: ''
+      parameters:
+        - name: size
+          in: query
+          description: ''
+          required: true
+          example: '10'
+  /api/v1/workout/intensity/:muscle_group_id:
+    get:
+      summary: IntensityList
+      operationId: IntensityList
+      description: ''
+      tags:
+        - Workout
+      responses:
+        '200':
+          description: ''
+      parameters:
+        - name: type
+          in: query
+          description: ''
+          required: true
+          example: strength
+        - name: part_body
+          in: query
+          description: ''
+          required: true
+          example: lower_body
+        - name: size
+          in: query
+          description: ''
+          required: true
+          example: '10'
+        - name: muscle_group_id
+          in: query
+          description: ''
+          required: true
+          example: efab3d82-7ffd-4e4d-8c22-d99bec1d6ba3
+  /api/v1/workout/intensity/:muscle_group_id/:intensity/:
+    get:
+      summary: IntensityDetails
+      operationId: IntensityDetails
+      description: ''
+      tags:
+        - Workout
+      responses:
+        '200':
+          description: ''
+      parameters:
+        - name: type
+          in: query
+          description: ''
+          required: true
+          example: strength
+        - name: part_body
+          in: query
+          description: ''
+          required: true
+          example: lower_body
+        - name: intensity
+          in: query
+          description: ''
+          required: true
+          example: beginner
+        - name: muscle_group_id
+          in: query
+          description: ''
+          required: true
+          example: efab3d82-7ffd-4e4d-8c22-d99bec1d6ba3
+  /api/v1/workout/routine/:routine_id:
+    get:
+      summary: RoutineDetails
+      operationId: RoutineDetails
+      description: ''
+      tags:
+        - Workout
+      responses:
+        '200':
+          description: ''
+      parameters:
+        - name: routine_id
+          in: query
+          description: ''
+          required: true
+          example: 4741267a-ba74-4fc0-a88c-5216bd897408
+servers:
+  - url: http://127.0.0.1:3000
+components:
+  schemas:
+    /auth:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+  requestBodies:
+    /auth:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas//auth'
+      description: ''
+      required: true
+  securitySchemes: {}

@@ -1,0 +1,15 @@
+{
+  "home": {
+    "action|Action": "操作",
+    "catalog|Catalog": "目录",
+    "highest_rating|Highest rating": "最高评分",
+    "inventaried|Inventaried": "已盘点",
+    "less_commented|Less Commented": "评论最少",
+    "lower_rating|Lower Rating": "最低评分",
+    "most_commented|Most Commented": "评论最多",
+    "reviewed| Reviewed": "已审核",
+    "search_client_by_name|Search Client By Name": "按姓名搜索客户",
+    "see_more|See more": "查看更多",
+    "type|Type": "类型"
+  }
+}

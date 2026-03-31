@@ -1,0 +1,15 @@
+{
+  "home": {
+    "action|Action": "Acción",
+    "catalog|Catalog": "Catálogo",
+    "highest_rating|Highest rating": "Mejor valorados",
+    "inventaried|Inventaried": "Inventariado",
+    "less_commented|Less Commented": "Menos comentados",
+    "lower_rating|Lower Rating": "Peor valorados",
+    "most_commented|Most Commented": "Más comentados",
+    "reviewed| Reviewed": "Revisados",
+    "search_client_by_name|Search Client By Name": "Buscar cliente por nombre",
+    "see_more|See more": "Ver más",
+    "type|Type": "Tipo"
+  }
+}
