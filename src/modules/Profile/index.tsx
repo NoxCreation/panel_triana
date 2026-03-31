@@ -17,7 +17,6 @@ import {
     Spinner,
     Center,
     Container,
-    Text
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -26,7 +25,6 @@ import { z } from "zod";
 import { ImageUploadEdit } from "@/components/ImageUploadEdit";
 import { useFetch } from "@/hooks/useFetch";
 import { InputVP } from "@/components/InputVP";
-import { useTranslation } from "react-i18next";
 import { UserType } from "@/types/UserType";
 
 type UserProfile = {
@@ -233,14 +231,6 @@ export default function ProfileIndex({
                                     image={watch("photo")} w={125} h={125} width={125} height={125} isDisabled={false} onChangeImage={(image: string | undefined) => {
                                         setValue("photo", image)
                                     }} />
-                            </CardBody>
-                        </Card>
-                    </Stack>
-
-                    <Stack alignItems={'center'}>
-                        <Card variant="outline" overflow={'hidden'} >
-                            <CardBody p={0}>
-                                <Text>{user.wallet} USD</Text>
                             </CardBody>
                         </Card>
                     </Stack>

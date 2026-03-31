@@ -10,7 +10,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         first_name: "Juan",
         last_name: "Ernesto",
         email: 'juan@gmail.com',
-        role: 'ADMIN',
         password_hash: await generateHash("Holamundo123*")
       }
     })

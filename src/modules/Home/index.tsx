@@ -21,19 +21,9 @@ import {
     Heading,
     Stack,
     Box,
-    SimpleGrid,
-    Card,
-    CardHeader,
-    CardBody,
     IconButton,
 } from "@chakra-ui/react";
-import { useEffect, useState, useRef } from "react";
-import { subDays, startOfDay } from "date-fns";
-import DateRangeSelector from "@/components/DateRangeSelector";
-import { ColumnsTableOrders } from "./TableColumns";
 import { FiRefreshCcw } from "react-icons/fi";
-import { OrderType } from "@/types/OrderType";
-import { CardUser } from "./components/CardUser";
 
 export default function HomeIndex() {
     const profile = useGetProfile()

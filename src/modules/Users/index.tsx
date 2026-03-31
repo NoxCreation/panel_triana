@@ -113,10 +113,6 @@ export default function HomeIndex() {
         setTimeout(() => onOpen(), 50)
     }
 
-    const handleViewDetail = (user: UserType) => {
-        router.push(`/users/${user.id}`)
-    }
-
     return (
         <ContainerSystem navBarControl={
             <Breadcrumb>
@@ -175,8 +171,7 @@ export default function HomeIndex() {
                                 fetchData={({ page, limit, sort, search }) => fetchUsers({ page, limit, sort, search, accessToken: profile?.accessToken })}
                                 columns={ColumnsTable({
                                     onDelete: handleDelete,
-                                    onEdit: handleEdit,
-                                    onViewDetail: handleViewDetail
+                                    onEdit: handleEdit
                                 }) as ColumnDef<UserType>[]}
                                 defaultPageSize={10}
                                 enableExpanding={false}

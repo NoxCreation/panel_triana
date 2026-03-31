@@ -46,7 +46,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {
             user: {
                 ...user,
-                wallet: parseFloat(`${user.wallet}`),
                 createdAt: user.createdAt.toISOString(),
                 updatedAt: user.updatedAt.toISOString(),
             }
