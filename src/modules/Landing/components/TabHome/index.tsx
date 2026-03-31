@@ -18,7 +18,7 @@ export const TabHome = ({
                     <FormLabel>Título principal</FormLabel>
                     <Input placeholder="Marketing & Consultoría que mueve negocios"
                         isDisabled={isLoading}
-                        value={content['home'].main_title}
+                        value={content['home']?.main_title}
                         onChange={e => onChangeContent("home", {
                             'main_title': e.target.value
                         })}
@@ -28,7 +28,7 @@ export const TabHome = ({
                     <FormLabel>Subtítulo</FormLabel>
                     <Textarea rows={2} placeholder="Ayudo a emprendedores y restaurantes..."
                         isDisabled={isLoading}
-                        value={content['home'].main_subtitle}
+                        value={content['home']?.main_subtitle}
                         onChange={e => onChangeContent("home", {
                             'main_subtitle': e.target.value
                         })}
