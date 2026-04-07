@@ -21,7 +21,6 @@ import { useFetch } from "@/hooks/useFetch";
 import { Preview } from "./components/Preview";
 import { ContentType } from "@/types/ContentType";
 import { TabServices } from "./components/TabServices";
-import { TabProcess } from "./components/TabProcess";
 import { TabMy } from "./components/TabMy";
 import { TabTestimonies } from "./components/TabTestimonies";
 import { TabContact } from "./components/TabContact";
@@ -175,14 +174,6 @@ export default function LandingIndex() {
 
                                         {/* Services */}
                                         <TabServices
-                                            content={content}
-                                            onChangeContent={handleChangeContent}
-                                            onSaveContent={handleSaveContent}
-                                            isLoading={isLoading}
-                                        />
-
-                                        {/* Process */}
-                                        <TabProcess
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
