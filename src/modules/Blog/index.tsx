@@ -26,23 +26,25 @@ import { FormUser } from "./FormUser";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
 import { useFetch } from "@/hooks/useFetch";
+import { ArticleType } from "@/types/ArticleType";
+import { useRouter } from "next/router";
 
-export default function HomeIndex() {
+export default function BlogIndex() {
     const profile = useGetProfile();
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const router = useRouter()
     const tableRef = useRef<DataTableRef<UserType>>(null);
     const [fieldEdit, setFieldEdit] = useState(undefined)
     const { handleFetch } = useFetch()
 
     // Función fetchData que llama a la API
-    const fetchUsers = async ({ page, limit, sort, search, accessToken }) => {
+    const fetchArticles = async ({ page, limit, sort, search, accessToken }) => {
         if (accessToken) {
             const params = new URLSearchParams();
             params.append('page', String(page)); // si tu API usa page base 1
             params.append('limit', String(limit));
             if (search) params.append('search', String(search));
             if (sort) params.append('sort', sort);
-            const res = await fetch(`/api/v1/users?${params}`, {
+            const res = await fetch(`/api/v1/blog?${params}`, {
                 headers: {
                     'authorization': `Bearer ${accessToken}`
                 }
@@ -65,91 +67,36 @@ export default function HomeIndex() {
     }
 
     // Funcion para eliminar
-    const handleDelete = (user: UserType) => {
-        withReactContent(Swal).fire({
-            title: "¿Estás seguro?",
-            text: "¿Estás seguro de querer eliminar este registro?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
-            confirmButtonText: "Si, ¡Elimínalo!",
-            preConfirm: async () => {
-                Swal.showLoading()
-
-                const response = await handleFetch(
-                    `/users/${user.id}`,
-                    'DELETE'
-                )
-                if (response.status === 204) {
-                    tableRef.current.refresh()
-                    withReactContent(Swal).fire({
-                        text: "¡Registro eliminado satisfactoriamente!",
-                        icon: "success",
-                    })
-                } else {
-                    const errorData = await response.json()
-                    withReactContent(Swal).fire({
-                        title: "Error!",
-                        text: errorData.error || "Hubo un error al eliminar el campo.",
-                        icon: "error",
-                    })
-                }
-
-                Swal.hideLoading()
-            },
-        })
+    const handleDelete = (user: ArticleType) => {
+       
     }
 
-    const handleEdit = (user: UserType) => {
-        setFieldEdit(user)
-        setTimeout(() => onOpen(), 50)
+    const handleEdit = (article: ArticleType) => {
+        router.push(`/blog/edit/${article.id}`)
     }
 
     const handleCreate = () => {
-        setFieldEdit(undefined)
-        setTimeout(() => onOpen(), 50)
+        router.push(`/blog/create`)
     }
 
     return (
         <ContainerSystem navBarControl={
             <Breadcrumb>
                 <BreadcrumbItem>
-                    <BreadcrumbLink href='#'>Clientes</BreadcrumbLink>
+                    <BreadcrumbLink href='#'>Blog</BreadcrumbLink>
                 </BreadcrumbItem>
 
                 <BreadcrumbItem isCurrentPage>
-                    <BreadcrumbLink href='/users'>Listar</BreadcrumbLink>
+                    <BreadcrumbLink href='/blog'>Listar</BreadcrumbLink>
                 </BreadcrumbItem>
             </Breadcrumb>
         }>
-            <CustomDrawer
-                title={fieldEdit ? "Editar Usuario" : "Crear Usuario"}
-                isOpen={isOpen}
-                onClose={() => { onClose(); }}
-                size="sm"
-            >
-                <CrudDrawer
-                    fields={[
-                        { name: "photo", label: 'Foto', default: "", type: "string" },
-                        { name: "email", label: 'Correo', default: "", type: "string" },
-                        { name: "first_name", label: 'Nombres', default: "", type: "string" },
-                        { name: "last_name", label: 'Apellidos', default: "", type: "string" },
-                        { name: "role", label: 'Role', default: "", type: "string" },
-                        { name: "password", label: 'Contraseña', default: "", type: "string" }
-                    ]}
-                    initialice={fieldEdit}
-                    endpoint={"/users"}
-                    onClose={() => { onClose(); tableRef.current.refresh(); }}
-                    FieldComponent={FormUser}
-                />
-            </CustomDrawer>
 
             <Stack spacing={2}>
 
                 <Card variant={'table'}>
                     <CardHeader display={"flex"} alignItems={{ base: "inherit", md: "center" }} flexDir={{ base: "column", md: 'row' }}>
-                        <Heading size='md' flex={1}>Clientes</Heading>
+                        <Heading size='md' flex={1}>Artículos</Heading>
                         <Stack alignItems={'end'}>
                             <Flex>
                                 <InputSearchSimple
@@ -166,11 +113,11 @@ export default function HomeIndex() {
                         <Stack>
                             <DataTable
                                 ref={tableRef}
-                                fetchData={({ page, limit, sort, search }) => fetchUsers({ page, limit, sort, search, accessToken: profile?.accessToken })}
+                                fetchData={({ page, limit, sort, search }) => fetchArticles({ page, limit, sort, search, accessToken: profile?.accessToken })}
                                 columns={ColumnsTable({
                                     onDelete: handleDelete,
                                     onEdit: handleEdit
-                                }) as ColumnDef<UserType>[]}
+                                }) as ColumnDef<ArticleType>[]}
                                 defaultPageSize={10}
                                 enableExpanding={false}
                                 mode="infinite"

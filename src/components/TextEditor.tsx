@@ -5,10 +5,20 @@ import {
     Paragraph,
     Bold,
     Italic,
+    Underline,
+    Strikethrough,
+    List,
+    Heading,
+    Link,
+    Image,
+    ImageToolbar,
+    ImageCaption,
+    ImageStyle,
+    ImageUpload,
+    Alignment,
 } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';
 import { useEffect, useRef } from 'react';
-// import coreTranslations from 'ckeditor5/translations/es.js';
 
 export default function TextEditor({ body, setBody, loading }: { body: string, setBody: (value: string) => void, loading: boolean }) {
 
@@ -28,9 +38,49 @@ export default function TextEditor({ body, setBody, loading }: { body: string, s
             editor={ClassicEditor}
             config={{
                 licenseKey: 'GPL',
-                plugins: [Essentials, Paragraph, Bold, Italic],
-                // translations: [ coreTranslations ],
-                toolbar: ['undo', 'redo', '|', 'bold', 'italic', '|'],
+                plugins: [
+                    Essentials,
+                    Paragraph,
+                    Bold,
+                    Italic,
+                    Underline,
+                    Strikethrough,
+                    List,
+                    Heading,
+                    Link,
+                    Image,
+                    ImageToolbar,
+                    ImageCaption,
+                    ImageStyle,
+                    ImageUpload,
+                    Alignment,
+                ],
+                toolbar: {
+                    items: [
+                        'undo', 'redo',
+                        '|',
+                        'heading',
+                        '|',
+                        'bold', 'italic', 'underline', 'strikethrough',
+                        '|',
+                        'bulletedList', 'numberedList',
+                        '|',
+                        'alignment',
+                        '|',
+                        'link'
+                    ],
+                },
+                heading: {
+                    options: [
+                        { model: 'paragraph', title: 'Párrafo', class: 'ck-heading_paragraph' },
+                        { model: 'heading1', view: 'h1', title: 'Título 1', class: 'ck-heading_heading1' },
+                        { model: 'heading2', view: 'h2', title: 'Título 2', class: 'ck-heading_heading2' },
+                        { model: 'heading3', view: 'h3', title: 'Título 3', class: 'ck-heading_heading3' },
+                    ]
+                },
+                alignment: {
+                    options: ['left', 'center', 'right', 'justify'],
+                },
                 initialData: body,
             }}
             disabled={loading}

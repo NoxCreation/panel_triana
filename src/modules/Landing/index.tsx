@@ -19,6 +19,12 @@ import { TabHome } from "./components/TabHome";
 import { useEffect, useState } from "react";
 import { useFetch } from "@/hooks/useFetch";
 import { Preview } from "./components/Preview";
+import { ContentType } from "@/types/ContentType";
+import { TabServices } from "./components/TabServices";
+import { TabProcess } from "./components/TabProcess";
+import { TabMy } from "./components/TabMy";
+import { TabTestimonies } from "./components/TabTestimonies";
+import { TabContact } from "./components/TabContact";
 
 export default function LandingIndex() {
     const [tab, setTab] = useState(0)
@@ -26,11 +32,49 @@ export default function LandingIndex() {
     const [content, setContent] = useState({
         home: {
             main_title: "",
-            main_subtitle: ""
-        }
-    } as {
-        [key: string]: any
-    })
+            main_subtitle: "",
+            main_label: "",
+            btn_cta_to_schedule: "",
+            btn_cta_my_work: "",
+            stats: {
+                driven_businesses: 0,
+                years_of_experience: 0,
+                satisfied_customers: 0
+            },
+            why_choose_me: [
+            ],
+            how_we_work: [
+            ]
+        },
+        services: {
+            main_title: "",
+            main_subtitle: "",
+            services: []
+        },
+        testimonies: {
+            main_title: "",
+            main_subtitle: "",
+            testimonies: []
+        },
+        contact: {
+            main_title: "",
+            main_subtitle: "",
+            contact: {
+                address: "",
+                phone: "",
+                email: "",
+                hours: ""
+            },
+            social: {
+                linkedln: "",
+                tiktok: "",
+                facebook: "",
+                instagram: "",
+                youtube: ""
+            }
+        },
+    } as ContentType)
+    console.log(content)
 
     const handleChangeContent = (key: string, new_content: { [key: string]: any }) => {
         setContent(
@@ -60,14 +104,22 @@ export default function LandingIndex() {
         }
     }
 
-    const getPath=()=>{
-        switch(tab){
+    const getPath = () => {
+        switch (tab) {
             case 0:
                 return '/'
             case 1:
                 return '/service'
+            case 2:
+                return '/process'
+            case 3:
+                return '/my'
+            case 4:
+                return '/testimonies'
+            case 5:
+                return '/contact'
         }
-         return '/'
+        return '/'
     }
 
     useEffect(() => {
@@ -106,12 +158,55 @@ export default function LandingIndex() {
                                     <TabList>
                                         <Tab>Principal</Tab>
                                         <Tab>Servicios</Tab>
-
+                                        <Tab>Proceso</Tab>
+                                        <Tab>Sobre Mi</Tab>
+                                        <Tab>Testimonios</Tab>
+                                        <Tab>Contacto</Tab>
                                     </TabList>
 
                                     <TabPanels>
                                         {/* Home */}
                                         <TabHome
+                                            content={content}
+                                            onChangeContent={handleChangeContent}
+                                            onSaveContent={handleSaveContent}
+                                            isLoading={isLoading}
+                                        />
+
+                                        {/* Services */}
+                                        <TabServices
+                                            content={content}
+                                            onChangeContent={handleChangeContent}
+                                            onSaveContent={handleSaveContent}
+                                            isLoading={isLoading}
+                                        />
+
+                                        {/* Process */}
+                                        <TabProcess
+                                            content={content}
+                                            onChangeContent={handleChangeContent}
+                                            onSaveContent={handleSaveContent}
+                                            isLoading={isLoading}
+                                        />
+
+                                        {/* My */}
+                                        <TabMy
+                                            content={content}
+                                            onChangeContent={handleChangeContent}
+                                            onSaveContent={handleSaveContent}
+                                            isLoading={isLoading}
+                                        />
+
+                                        {/* Testimonies */}
+                                        <TabTestimonies
+                                            content={content}
+                                            onChangeContent={handleChangeContent}
+                                            onSaveContent={handleSaveContent}
+                                            isLoading={isLoading}
+                                        />
+
+                                        {/* Contact */}
+                                        <TabContact
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}

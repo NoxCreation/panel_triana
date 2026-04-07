@@ -3,11 +3,12 @@ import MainLayout from "@/components/Layout/MainLayout";
 import { GetServerSideProps } from "next";
 import is_auth from "@/utils/middlewares/is_auth";
 
-export default function Home() {
+export default function Blog() {
   return (
-    <MainLayout screenTitle="Home">
-      <LoadSuspense load={() => import('@/modules/Home')}
+    <MainLayout screenTitle="Blog">
+      <LoadSuspense load={() => import('@/modules/Blog')}
         params={{
+
         }}
       />
     </MainLayout>

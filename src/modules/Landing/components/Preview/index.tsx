@@ -64,7 +64,7 @@ export const Preview = ({ path }: { path: string }) => {
     return (
         <Stack spacing={3}>
             <Flex>
-                <Heading size="sm" flex={1}>Vista previa {path}</Heading>
+                <Heading size="sm" flex={1}>Vista previa</Heading>
                 <Button
                     size="sm"
                     onClick={handleRefresh}

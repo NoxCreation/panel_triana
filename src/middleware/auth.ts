@@ -2,6 +2,7 @@ import { verifyToken } from '@/utils/generateHash';
 import { prisma } from '@/utils/prisma';
 import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
+import { getToken } from "next-auth/jwt";
 
 export interface AuthenticatedRequest extends NextApiRequest {
     user?: {
@@ -36,9 +37,8 @@ const authenticate = (handler: any) => {
                 // Primero intentamos con tu función verifyToken (si existe)
                 decoded = verifyToken(token);
             } catch (jwtError) {
-                // Si falla, intentamos con jwt.verify
-                const secretKey = process.env.NEXTAUTH_SECRET as string;
-                decoded = jwt.verify(token, secretKey);
+                // Si falla, intentamos con getToken
+                decoded = await getToken({ req, secret: process.env.NEXTAUTH_SECRET }); //jwt.verify(token, secretKey);
             }
 
             // 4. Verificar que el token tiene los campos necesarios

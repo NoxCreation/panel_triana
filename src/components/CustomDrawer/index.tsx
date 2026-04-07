@@ -27,7 +27,7 @@ export const CustomDrawer = ({
             {...props}
         >
             <DrawerOverlay />
-            <DrawerContent m={{ base: 0, md: 4 }} borderRadius={'4px'} minW={minW} >
+            <DrawerContent m={{ base: 0, md: "16px" }} borderRadius={'4px'} minW={minW} >
                 <DrawerCloseButton />
                 <DrawerHeader>{title}</DrawerHeader>
 

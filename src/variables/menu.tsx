@@ -9,7 +9,7 @@ import {
     CiUser,
     CiViewTimeline,
 } from "react-icons/ci";
-import { FiAirplay } from "react-icons/fi";
+import { FiAirplay, FiBookOpen } from "react-icons/fi";
 
 export const list_menu = [
     {
@@ -38,6 +38,20 @@ export const list_menu = [
         label: "Landing Page",
         prefix: 'landing',
         link: "/landing",
+        matchLinks: []
+    },
+    {
+        icon: (
+            <Box
+                bg={'blue.500'}
+                p={2} borderRadius={'full'}
+            >
+                <FiBookOpen size={'20px'} />
+            </Box>
+        ),
+        label: "Blog",
+        prefix: 'blog',
+        link: "/blog",
         matchLinks: []
     },
     {

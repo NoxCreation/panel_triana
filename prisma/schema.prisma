@@ -10,6 +10,14 @@ datasource db {
   provider = "postgresql"
 }
 
+enum PaymentStatus {
+  pending
+  completed
+  dispute
+  refunded
+  failed
+}
+
 model Landing {
   id        String   @id @default(uuid()) @db.Uuid
   content   Json?    @default("{}") @db.Json
@@ -19,7 +27,6 @@ model Landing {
   @@map("landing")
 }
 
-// Modelos principales
 model User {
   id            String   @id @default(uuid()) @db.Uuid
   email         String   @unique
@@ -31,4 +38,54 @@ model User {
   updatedAt     DateTime @updatedAt
 
   @@map("users")
+}
+
+model Lead {
+  id         String    @id @default(uuid()) @db.Uuid
+  email      String    @unique
+  phone      String    @unique
+  first_name String?   @db.VarChar(250)
+  last_name  String?   @db.VarChar(250)
+  payments   Payment[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@map("leads")
+}
+
+model PaymentHistory {
+  id          String        @id @default(uuid()) @db.Uuid
+  status      PaymentStatus
+  description String        @db.Text
+  payment     Payment?      @relation(fields: [paymentId], references: [id])
+  paymentId   String?       @db.Uuid
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@map("payments_history")
+}
+
+model Payment {
+  id        String           @id @default(uuid()) @db.Uuid
+  lead      Lead             @relation(fields: [leadId], references: [id])
+  leadId    String           @db.Uuid
+  amount    Decimal          @default(0)
+  history   PaymentHistory[]
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@map("payments")
+}
+
+model Article {
+  id               String   @id @default(uuid()) @db.Uuid
+  title            String   @unique @db.VarChar(250)
+  thumbnail        String   @db.Text
+  mini_description String   @unique @db.VarChar(250)
+  description      String   @db.Text
+  slug             String   @default("") @db.Text
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("articles")
 }
