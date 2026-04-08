@@ -37,22 +37,18 @@ export const list_menu = [
         ),
         label: "Landing Page",
         prefix: 'landing',
-        link: "/landing",
-        matchLinks: []
-    },
-    {
-        icon: (
-            <Box
-                bg={'blue.500'}
-                p={2} borderRadius={'full'}
-            >
-                <FiBookOpen size={'20px'} />
-            </Box>
-        ),
-        label: "Blog",
-        prefix: 'blog',
-        link: "/blog",
-        matchLinks: []
+        subitems: [
+            { label: "Datos de Página", link: "/landing", prefix: 'data_landing' },
+            { label: "Posibles Clientes", link: "/leads", prefix: 'lead_landing' },
+            { label: "Blog", link: "/blog", prefix: 'blog_landing' },
+            { label: "Pagos de Servicios", link: "/services_payments", prefix: 'services_payments_landing' },
+        ],
+        matchLinks: [
+            '/landing',
+            '/leads',
+            '/blog',
+            '/services',
+        ]
     },
     {
         icon: (
@@ -64,26 +60,11 @@ export const list_menu = [
             </Box>
         ),
         label: "Usuarios",
-        prefix: 'users',
+        prefix: 'persons',
         link: "/users",
         matchLinks: []
     },
-    /* {
-        icon: <CiViewTimeline size={'20px'} />,
-        label: "Landing Page",
-        prefix: 'landing',
-        subitems: [
-            { label: "Home", link: "/articles/fundamentals", prefix: 'articles_fundamentals' },
-            { label: "Sex Education", link: "/articles/sex_education", prefix: 'articles_sex_education' },
-            { label: "Aches and Pain", link: "/articles/aches_and_pain", prefix: 'articles_aches_and_pain' },
-            { label: "Nutrition", link: "/articles/nutrition", prefix: 'articles_nutrition' }
-        ],
-        matchLinks: [
-            '/articles/fundamentals',
-            '/articles/sex_education',
-            '/articles/aches_and_pain',
-            '/articles/nutrition'
-        ]
-    }, */
+    
+    
 ]
 

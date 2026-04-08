@@ -14,6 +14,9 @@ import {
     Tab,
     TabPanels,
     Progress,
+    useToast,
+    Flex,
+    Button,
 } from "@chakra-ui/react";
 import { TabHome } from "./components/TabHome";
 import { useEffect, useState } from "react";
@@ -24,8 +27,10 @@ import { TabServices } from "./components/TabServices";
 import { TabMy } from "./components/TabMy";
 import { TabTestimonies } from "./components/TabTestimonies";
 import { TabContact } from "./components/TabContact";
+import { FiSave } from "react-icons/fi";
 
 export default function LandingIndex() {
+    const toast = useToast()
     const [tab, setTab] = useState(0)
     const { handleFetch, isLoading } = useFetch()
     const [content, setContent] = useState({
@@ -98,8 +103,25 @@ export default function LandingIndex() {
 
     const handleSaveContent = async () => {
         const response = await handleFetch("/landing", 'POST', { content })
-        if (response.status == 200) {
-
+        if (response.status == 201) {
+            toast({
+                title: "Contenido guardado",
+                status: "success",
+                position: "top-right",
+                duration: 3000,
+                isClosable: true,
+                variant: "subtle"
+            })
+        }
+        else {
+            toast({
+                title: "Error al guardar el contenido",
+                status: "error",
+                position: "top-right",
+                duration: 3000,
+                isClosable: true,
+                variant: "subtle"
+            })
         }
     }
 
@@ -110,12 +132,10 @@ export default function LandingIndex() {
             case 1:
                 return '/service'
             case 2:
-                return '/process'
-            case 3:
                 return '/my'
-            case 4:
+            case 3:
                 return '/testimonies'
-            case 5:
+            case 4:
                 return '/contact'
         }
         return '/'
@@ -154,14 +174,20 @@ export default function LandingIndex() {
                             <Stack>
                                 {isLoading && <Progress isIndeterminate colorScheme="primary" size={'sm'} />}
                                 <Tabs variant="enclosed" colorScheme="primary" onChange={e => setTab(e)}>
-                                    <TabList>
-                                        <Tab>Principal</Tab>
-                                        <Tab>Servicios</Tab>
-                                        <Tab>Proceso</Tab>
-                                        <Tab>Sobre Mi</Tab>
-                                        <Tab>Testimonios</Tab>
-                                        <Tab>Contacto</Tab>
-                                    </TabList>
+                                    <Flex gap={4}>
+                                        <TabList flex={1}>
+                                            <Tab>Principal</Tab>
+                                            <Tab>Servicios</Tab>
+                                            <Tab>Sobre Mi</Tab>
+                                            <Tab>Testimonios</Tab>
+                                            <Tab>Contacto</Tab>
+                                        </TabList>
+                                        <Button variant={'ghost'} isDisabled={isLoading} gap={2} onClick={async () => {
+                                            await handleSaveContent()
+                                        }}>
+                                            <FiSave /> Guardar
+                                        </Button>
+                                    </Flex>
 
                                     <TabPanels>
                                         {/* Home */}
