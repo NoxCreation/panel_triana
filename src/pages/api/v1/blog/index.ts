@@ -46,7 +46,9 @@ async function handleGet(req: AuthenticatedRequest, res: NextApiResponse) {
                 where,
                 skip,
                 take,
-                orderBy,
+                orderBy: {
+                    createdAt: 'asc'
+                },
                 select: {
                     id: true,
                     title: true,
