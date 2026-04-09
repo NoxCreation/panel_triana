@@ -125,7 +125,6 @@ export default function ArticleCreateIndex({
                                 </Stack>
                                 <Flex gap={2}>
                                     <Button type="submit" isLoading={loading}>Guardar Artículo</Button>
-                                    <Button colorScheme="teal" isDisabled={loading}>Publicar Artículo</Button>
                                 </Flex>
                             </Flex>
                         </CardBody>
