@@ -37,7 +37,7 @@ import { ProfileButton } from "./Navbar/ProfileButton";
 
 export const router_permission = {
     ADMIN: [
-        'home', 'users', 'landing', 'blog', 'persons'
+        'home', 'users', 'landing', 'blog', 'persons', 'privacy_policy_web'
     ],
 };
 

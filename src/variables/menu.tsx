@@ -4,6 +4,7 @@ import {
     CiDollar,
     CiGrid41,
     CiPenpot,
+    CiReceipt,
     CiShop,
     CiShoppingBasket,
     CiUser,
@@ -64,7 +65,20 @@ export const list_menu = [
         link: "/users",
         matchLinks: []
     },
-    
-    
+    {
+        icon: (
+            <Box
+                bg={'cyan.500'}
+                p={2} borderRadius={'full'}
+            >
+                <CiReceipt size={'20px'} />
+            </Box>
+        ),
+        label: "Políticas de Privacidad Web",
+        prefix: 'privacy_policy_web',
+        link: "/privacy-policy-web",
+        matchLinks: []
+    },
+
 ]
 

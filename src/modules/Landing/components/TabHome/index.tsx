@@ -106,7 +106,7 @@ export const TabHome = ({
                 <Flex gap={4}>
                     <FormInput
                         value={content['home']?.btn_cta_to_schedule}
-                        label={"CTA Consulta"}
+                        label={"CTA Izquierdo"}
                         isLoading={isLoading}
                         onChange={e => onChangeContent("home", {
                             'btn_cta_to_schedule': e.target.value
@@ -114,7 +114,7 @@ export const TabHome = ({
                     />
                     <FormInput
                         value={content['home']?.btn_cta_my_work}
-                        label={"CTA Conoce mi Trabajo"}
+                        label={"CTA Derecho"}
                         isLoading={isLoading}
                         onChange={e => onChangeContent("home", {
                             'btn_cta_my_work': e.target.value

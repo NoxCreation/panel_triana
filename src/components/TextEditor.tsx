@@ -7,7 +7,6 @@ import {
     Italic,
     Underline,
     Strikethrough,
-    List,
     Heading,
     Link,
     Image,
@@ -16,6 +15,8 @@ import {
     ImageStyle,
     ImageUpload,
     Alignment,
+    List, 
+    ListProperties
 } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';
 import { useEffect, useRef } from 'react';
@@ -45,7 +46,6 @@ export default function TextEditor({ body, setBody, loading }: { body: string, s
                     Italic,
                     Underline,
                     Strikethrough,
-                    List,
                     Heading,
                     Link,
                     Image,
@@ -54,6 +54,8 @@ export default function TextEditor({ body, setBody, loading }: { body: string, s
                     ImageStyle,
                     ImageUpload,
                     Alignment,
+                    List,          // 👈 Añade List a los plugins
+                    ListProperties // 👈 Añade ListProperties (opcional)
                 ],
                 toolbar: {
                     items: [

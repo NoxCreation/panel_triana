@@ -31,11 +31,10 @@ export const TabTestimonies = ({
     const { isOpen, onOpen, onClose } = useDisclosure()
     const tableRef = useRef<DataTableRef<any>>(null);
     const [select, setSelect] = useState(undefined as undefined | TestimoniesType)
-    console.log("content", content)
 
     const handleFetch = async () => {
         return {
-            data: content.testimonies?.testimonies ? content.testimonies?.testimonies : [],
+            data: content.testimonies?.testimonies ? content.testimonies?.testimonies.toReversed() : [],
             meta: {
                 "total": 0,
                 "page": 1,
