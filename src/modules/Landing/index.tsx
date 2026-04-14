@@ -78,7 +78,6 @@ export default function LandingIndex() {
             }
         },
     } as ContentType)
-    console.log(content)
 
     const handleChangeContent = (key: string, new_content: { [key: string]: any }) => {
         setContent(

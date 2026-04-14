@@ -5,7 +5,6 @@ import {
     Image,
     Text,
     Button,
-    Progress,
     useToast,
     Flex,
 } from "@chakra-ui/react";

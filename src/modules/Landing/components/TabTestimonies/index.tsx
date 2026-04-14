@@ -33,14 +33,12 @@ export const TabTestimonies = ({
     const [select, setSelect] = useState(undefined as undefined | TestimoniesType)
 
     const handleFetch = async () => {
+        const testimonies = content.testimonies?.testimonies || [];
+        // Crear una copia y revertir el orden (sin mutar el original)
+        const reversed = [...testimonies].reverse();
         return {
-            data: content.testimonies?.testimonies ? content.testimonies?.testimonies.toReversed() : [],
-            meta: {
-                "total": 0,
-                "page": 1,
-                "limit": 10,
-                "totalPages": 1
-            }
+            data: reversed,
+            meta: { ... }
         }
     }
 
