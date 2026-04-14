@@ -1,5 +1,3 @@
-
-
 import { Button, Flex, Stack, TabPanel, IconButton, useDisclosure, Tooltip, Tag, Switch } from "@chakra-ui/react"
 import { useEffect, useRef, useState } from "react";
 import { FormInput } from "../FormControls/FormInput";
@@ -38,7 +36,12 @@ export const TabTestimonies = ({
         const reversed = [...testimonies].reverse();
         return {
             data: reversed,
-            meta: { ... }
+            meta: {
+                "total": 0,
+                "page": 1,
+                "limit": 10,
+                "totalPages": 1
+            }
         }
     }
 
