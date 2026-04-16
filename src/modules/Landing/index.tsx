@@ -214,12 +214,12 @@ export default function LandingIndex() {
                                         />
 
                                         {/* Testimonies */}
-                                        <TabTestimonies
+                                        {/* <TabTestimonies
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
                                             isLoading={isLoading}
-                                        />
+                                        /> */}
 
                                         {/* Contact */}
                                         <TabContact
