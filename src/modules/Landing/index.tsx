@@ -222,12 +222,12 @@ export default function LandingIndex() {
                                         /> */}
 
                                         {/* Contact */}
-                                        <TabContact
+                                        {/* <TabContact
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
                                             isLoading={isLoading}
-                                        />
+                                        /> */}
                                     </TabPanels>
                                 </Tabs>
                             </Stack>
