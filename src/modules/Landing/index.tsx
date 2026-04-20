@@ -206,12 +206,12 @@ export default function LandingIndex() {
                                         /> */}
 
                                         {/* My */}
-                                        <TabMy
+                                        {/* <TabMy
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
                                             isLoading={isLoading}
-                                        />
+                                        /> */}
 
                                         {/* Testimonies */}
                                         {/* <TabTestimonies
