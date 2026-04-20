@@ -233,7 +233,7 @@ export default function LandingIndex() {
                             </Stack>
 
                             {/* Columna derecha: vista previa */}
-                            <Preview path={getPath()} />
+                            {/* <Preview path={getPath()} /> */}
                         </SimpleGrid>
                     </CardBody>
                 </Card>
