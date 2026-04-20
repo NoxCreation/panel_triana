@@ -190,12 +190,12 @@ export default function LandingIndex() {
 
                                     <TabPanels>
                                         {/* Home */}
-                                        <TabHome
+                                        {/* <TabHome
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
                                             isLoading={isLoading}
-                                        />
+                                        /> */}
 
                                         {/* Services */}
                                         {/* <TabServices
