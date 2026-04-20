@@ -198,36 +198,36 @@ export default function LandingIndex() {
                                         />
 
                                         {/* Services */}
-                                        {/* <TabServices
+                                        <TabServices
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
                                             isLoading={isLoading}
-                                        /> */}
+                                        />
 
                                         {/* My */}
-                                        {/* <TabMy
+                                        <TabMy
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
                                             isLoading={isLoading}
-                                        /> */}
+                                        />
 
                                         {/* Testimonies */}
-                                        {/* <TabTestimonies
+                                        <TabTestimonies
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
                                             isLoading={isLoading}
-                                        /> */}
+                                        />
 
                                         {/* Contact */}
-                                        {/* <TabContact
+                                        <TabContact
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
                                             isLoading={isLoading}
-                                        /> */}
+                                        />
                                     </TabPanels>
                                 </Tabs>
                             </Stack>
