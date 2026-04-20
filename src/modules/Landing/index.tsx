@@ -198,12 +198,12 @@ export default function LandingIndex() {
                                         />
 
                                         {/* Services */}
-                                        <TabServices
+                                        {/* <TabServices
                                             content={content}
                                             onChangeContent={handleChangeContent}
                                             onSaveContent={handleSaveContent}
                                             isLoading={isLoading}
-                                        />
+                                        /> */}
 
                                         {/* My */}
                                         <TabMy
