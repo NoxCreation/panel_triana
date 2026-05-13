@@ -29,8 +29,8 @@ interface ImageUploadProps {
     image?: string | undefined // Puede ser base64 o URL
     width?: number // Ancho deseado para la imagen final (opcional)
     height?: number // Alto deseado para la imagen final (opcional)
-    w?: number
-    h?: number
+    w?: number | string
+    h?: number | string
     aspectRatio?: number // Proporción ancho/alto para el recorte (opcional)
 }
 

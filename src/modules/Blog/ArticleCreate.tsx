@@ -130,15 +130,15 @@ export default function ArticleCreateIndex({
                         </CardBody>
                     </Card>
 
-                    <SimpleGrid columns={2} gap={2}>
+                    <SimpleGrid columns={2} templateColumns="1fr 2fr" gap={2}>
 
                         <Card>
                             <CardBody>
 
                                 <Stack>
                                     <ImageUploadEdit
-                                        w={500}
-                                        h={300}
+                                        w={"100%"}
+                                        h={"auto"}
                                         width={500}
                                         height={300}
                                         image={watch("thumbnail")}
@@ -184,6 +184,7 @@ export default function ArticleCreateIndex({
                                     <TextEditor
                                         body={watch("description")}
                                         setBody={(html) => {
+                                            console.log(html)
                                             setValue("description", html)
                                         }}
                                         loading={false}

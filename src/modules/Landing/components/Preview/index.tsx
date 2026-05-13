@@ -51,11 +51,13 @@ export const Preview = ({ path }: { path: string }) => {
     };
 
     useEffect(() => {
-        fetchScreenshot(false);
-        return () => {
-            if (imageUrl) URL.revokeObjectURL(imageUrl);
-            if (abortControllerRef.current) abortControllerRef.current.abort();
-        };
+        try {
+            fetchScreenshot(false);
+            return () => {
+                if (imageUrl) URL.revokeObjectURL(imageUrl);
+                if (abortControllerRef.current) abortControllerRef.current.abort();
+            };
+        } catch { }
     }, [path]);
 
     const handleRefresh = () => fetchScreenshot(true);
