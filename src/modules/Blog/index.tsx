@@ -68,7 +68,39 @@ export default function BlogIndex() {
 
     // Funcion para eliminar
     const handleDelete = (user: ArticleType) => {
-       
+        withReactContent(Swal).fire({
+            title: "¿Estás seguro?",
+            text: "¿Estás seguro de querer eliminar este registro?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Si, ¡Elimínalo!",
+            preConfirm: async () => {
+                Swal.showLoading()
+
+                const response = await handleFetch(
+                    `/blog/${user.id}`,
+                    'DELETE'
+                )
+                if (response.status === 204) {
+                    tableRef.current.refresh()
+                    withReactContent(Swal).fire({
+                        text: "¡Registro eliminado satisfactoriamente!",
+                        icon: "success",
+                    })
+                } else {
+                    const errorData = await response.json()
+                    withReactContent(Swal).fire({
+                        title: "Error!",
+                        text: errorData.error || "Hubo un error al eliminar el campo.",
+                        icon: "error",
+                    })
+                }
+
+                Swal.hideLoading()
+            },
+        })
     }
 
     const handleEdit = (article: ArticleType) => {

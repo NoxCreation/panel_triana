@@ -4,7 +4,7 @@ import { prisma } from "@/utils/prisma";
 import type { NextApiResponse } from "next";
 
 async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
-    const user = req.user;
+    /* const user = req.user; */
     const { id } = req.query;
 
     if (typeof id !== 'string') {
@@ -12,9 +12,9 @@ async function handler(req: AuthenticatedRequest, res: NextApiResponse) {
     }
 
     // Solo admin puede modificar/eliminar; GET puede ser público (autenticado)
-    if (req.method !== 'GET' && user?.role !== 'ADMIN') {
+    /* if (req.method !== 'GET' && user?.role !== 'ADMIN') {
         return res.status(403).json({ error: "Acceso denegado. Se requieren permisos de administrador." });
-    }
+    } */
 
     switch (req.method) {
         case 'GET':
@@ -103,14 +103,15 @@ async function handleDelete(req: AuthenticatedRequest, res: NextApiResponse, id:
             return res.status(400).json({ error: "No puedes eliminarte a ti mismo." });
         }
 
-        await prisma.user.delete({ where: { id } });
+        await prisma.article.delete({ where: { id } });
         return res.status(204).end();
     } catch (error: any) {
+        console.error(error);
         if (error.code === 'P2025') {
-            return res.status(404).json({ error: "Usuario no encontrado." });
+            return res.status(404).json({ error: "Article no encontrado." });
         }
         console.error(error);
-        return res.status(500).json({ error: "Error al eliminar usuario." });
+        return res.status(500).json({ error: "Error al eliminar article." });
     }
 }
 

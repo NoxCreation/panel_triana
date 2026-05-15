@@ -124,9 +124,9 @@ export const Sidebar = () => {
                 <Flex justifyContent={"left"} pt={10} px={isCollapsed ? '20px' : 10}>
                     <LocalizedLink href={"/home"}>
                         {isCollapsed ? (
-                            <Image src="/isologo-icon2.svg" w={"36px"} alt="" />
+                            <Image src="/isologo-icon.svg" w={"36px"} alt="" />
                         ) : (
-                            <Image src="/isologo2.svg" w={"140px"} alt="" />
+                            <Image src="/isologo.svg" w={"140px"} alt="" />
                         )}
                     </LocalizedLink>
                 </Flex>
