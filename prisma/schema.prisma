@@ -19,11 +19,11 @@ enum PaymentStatus {
 }
 
 model Landing {
-  id                       String   @id @default(uuid()) @db.Uuid
-  content                  Json?    @default("{}") @db.Json
-  privacy_policy_web       String   @db.Text @default("")
-  createdAt                DateTime @default(now())
-  updatedAt                DateTime @updatedAt
+  id                 String   @id @default(uuid()) @db.Uuid
+  content            Json?    @default("{}") @db.Json
+  privacy_policy_web String   @default("") @db.Text
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
 
   @@map("landing")
 }
@@ -92,4 +92,21 @@ model Article {
   updatedAt        DateTime @updatedAt
 
   @@map("articles")
+}
+
+model PageView {
+  id          String   @id @default(uuid()) @db.Uuid
+  ip          String   @db.Text // Dirección IP del visitante
+  country     String?  @db.VarChar(100) // País (derivado de IP)
+  countryName String?  @db.VarChar(100) // nombre del país (ej. "United States")
+  url         String   @db.Text // Ruta completa de la página visitada
+  sessionId   String   @db.Text // Identificador de sesión (para visitas únicas)
+  userAgent   String?  @db.Text // User-Agent opcional (navegador, dispositivo)
+  referrer    String?  @db.Text // Página de origen
+  createdAt   DateTime @default(now()) // Fecha y hora de la visita
+
+  @@index([createdAt])
+  @@index([url])
+  @@index([sessionId])
+  @@map("page_views")
 }
