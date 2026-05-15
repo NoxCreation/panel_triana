@@ -168,7 +168,7 @@ export default function LandingIndex() {
                         <Heading size='md'>Editar contenido de la Landing Page</Heading>
                     </CardHeader>
                     <CardBody>
-                        <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
+                        <SimpleGrid columns={{ base: 1, lg: 1 }} spacing={8}>
                             {/* Columna izquierda: formularios por sección */}
                             <Stack>
                                 {isLoading && <Progress isIndeterminate colorScheme="primary" size={'sm'} />}
@@ -234,6 +234,7 @@ export default function LandingIndex() {
 
                             {/* Columna derecha: vista previa */}
                             {/* <Preview path={getPath()} /> */}
+
                         </SimpleGrid>
                     </CardBody>
                 </Card>
