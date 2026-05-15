@@ -27,7 +27,7 @@ export const TrafficSourcesChart = ({
                             <YAxis type="category" dataKey="source" />
                             <RechartsTooltip />
                             <Legend />
-                            <Bar dataKey="visits" fill="#8884d8" name="Visitas" />
+                            <Bar dataKey="visits" fill="#f74de0" name="Visitas" />
                         </BarChart>
                     </ResponsiveContainer>
                 </Box>

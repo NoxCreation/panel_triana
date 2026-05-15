@@ -28,7 +28,7 @@ export const DailyVisitsChart = ({
                     Visitas por día ({rangeText})
                 </Heading>
                 {dailyVisits.length === 0 ? (
-                    <Alert status="info">
+                    <Alert variant={'subtle'} status="info">
                         <AlertIcon />
                         No hay datos para el período seleccionado.
                     </Alert>

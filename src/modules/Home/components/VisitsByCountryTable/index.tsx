@@ -11,7 +11,7 @@ export const VisitsByCountryTable = ({
 }) => {
 
     return (
-        <Card gridColumn={{ lg: 'span 2' }}>
+        <Card >
             <CardBody>
                 <Heading as="h2" size="md" mb={4}>Visitas por país (tabla)</Heading>
                 <TableContainer>

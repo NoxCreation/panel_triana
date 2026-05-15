@@ -38,6 +38,7 @@ function getTrafficSource(referrer: string | null): string {
         if (hostname.includes('youtube.') || hostname.includes('youtu.be')) return 'YouTube';
         if (hostname.includes('twitter.')) return 'Twitter';
         if (hostname.includes('instagram.')) return 'Instagram';
+        if (hostname.includes('bing.')) return 'Bing';
         return hostname; // o 'Otro'
     } catch {
         return 'Otro';
